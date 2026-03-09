@@ -100,6 +100,7 @@ def index():
     <ul>
       <li><a href="/osi">/osi</a> — OSI mapping</li>
       <li><a href="/dhcp">/dhcp</a> — Protocole DHCP</li>
+      <li><a href="/nat">/nat</a> — Protocole DHCP</li>
       <li><a href="/service">/service</a> — service contract & dependencies</li>
       <li><a href="/slow?ms=300">/slow</a> — simulate latency</li>
       <li><a href="/loss?p=0.2">/loss</a> — simulate errors/loss</li>
@@ -218,6 +219,98 @@ def dhcp():
         },
 
         "exemple_concret": "Quand un PC ou un smartphone se connecte à un réseau, il demande automatiquement une adresse IP via DHCP."
+    }
+
+    return jsonify(info)
+
+@app.get("/nat")
+def nat():
+    info = {
+        "protocole_ou_mecanisme": "NAT",
+        "signification": "Network Address Translation",
+        "role": "Traduire des adresses IP privées en adresse(s) IP publique(s) pour permettre la communication avec Internet.",
+
+        "pourquoi_on_utilise_nat": {
+            "economie_adresses_ipv4": "Permet à plusieurs machines privées de partager une même adresse IP publique.",
+            "masquage_reseau_interne": "Les machines internes ne sont pas directement visibles depuis Internet.",
+            "sortie_vers_internet": "Permet aux postes internes d'accéder au web même s'ils utilisent des adresses privées."
+        },
+
+        "adresses_privees_courantes": [
+            "10.0.0.0/8",
+            "172.16.0.0/12",
+            "192.168.0.0/16"
+        ],
+
+        "types_de_nat": {
+            "nat_statique": "Une adresse IP privée est associée en permanence à une adresse IP publique.",
+            "nat_dynamique": "Une adresse privée reçoit temporairement une adresse publique d'un pool.",
+            "pat_nat_overload": "Plusieurs machines privées partagent une même IP publique grâce à la traduction des ports."
+        },
+
+        "cas_le_plus_courant": {
+            "nom": "PAT",
+            "autre_nom": "NAT Overload",
+            "explication": "Le routeur remplace l'IP source privée par son IP publique et modifie aussi le port source."
+        },
+
+        "exemple_simple": {
+            "avant_nat": {
+                "ip_source": "192.168.1.10",
+                "port_source": 51514,
+                "ip_destination": "142.250.179.14",
+                "port_destination": 443,
+                "protocole": "TCP"
+            },
+            "apres_nat": {
+                "ip_source": "203.0.113.5",
+                "port_source": 40001,
+                "ip_destination": "142.250.179.14",
+                "port_destination": 443,
+                "protocole": "TCP"
+            },
+            "explication": "Le routeur NAT remplace l'adresse privée 192.168.1.10 par son IP publique 203.0.113.5 et change le port source 51514 en 40001."
+        },
+
+        "table_nat_exemple": [
+            {
+                "interne": "192.168.1.10:51514",
+                "publique": "203.0.113.5:40001",
+                "destination": "142.250.179.14:443",
+                "protocole": "TCP"
+            },
+            {
+                "interne": "192.168.1.11:51515",
+                "publique": "203.0.113.5:40002",
+                "destination": "1.1.1.1:53",
+                "protocole": "UDP"
+            }
+        ],
+
+        "fonctionnement_retour": {
+            "principe": "Quand la réponse revient vers l'IP publique et le port traduits, le routeur consulte sa table NAT.",
+            "exemple": "203.0.113.5:40001 est remappé vers 192.168.1.10:51514.",
+            "resultat": "La réponse est renvoyée à la bonne machine interne."
+        },
+
+        "avantages": [
+            "Partage d'une même IP publique",
+            "Réduction de la consommation d'adresses IPv4",
+            "Masquage partiel du réseau interne"
+        ],
+
+        "limites": [
+            "Complexifie certains protocoles",
+            "Peut gêner les connexions entrantes",
+            "N'est pas un mécanisme de sécurité suffisant à lui seul"
+        ],
+
+        "couche_osi": {
+            "principale": "Couche 3 - Réseau",
+            "nuance": "Quand le NAT modifie aussi les ports (PAT), il touche également des informations liées à la couche 4."
+        },
+
+        "analogie": "Le NAT agit comme un standard téléphonique : plusieurs postes internes sortent avec un même numéro principal, mais le standard sait à qui renvoyer chaque appel retour."
     }
 
     return jsonify(info)
