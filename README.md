@@ -55,18 +55,18 @@ Vous pouvez observez les différentes couches OSI sur votre site **{site}.python
   
 **Exercice 1 : Définissez les termes suivants (Répondre directement dans GitHub)**    
 * Un protocole,  Règle de communication.
-* Les protocoles HTTP, TCP et IP
-* 
+  Les protocoles HTTP, TCP et IP
+  
 * Une entité protocolaire,Logiciel ou matériel appliquant le protocole.
-* 
+  
 * Un service,Fonctionnalité offerte par une couche inférieure à celle du dessus
-* 
+  
 * Une primitive de service,Instruction échangée entre deux couches adjacentes (ex: demander, confirmer).
-* 
+  
 * Une Service Data Unit (SDU) par rapport à une PDU, La SDU est la donnée brute à envoyer . La PDU est cette donnée "emballée" avec un en-tête pour le réseau
-* 
+  
 * Un point d'accès à un service SAP (Service Access Point)L'interface ou l'adresse pour accéder à un service
-* 
+  
 
 ---------------------------------------------------
 🗺️ Séquence 5 : Retour sur le protocole DHCP
