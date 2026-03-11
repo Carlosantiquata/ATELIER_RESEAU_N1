@@ -67,7 +67,6 @@ Vous pouvez observez les différentes couches OSI sur votre site **{site}.python
 
 <img width="552" height="204" alt="image" src="https://github.com/user-attachments/assets/f0d8f83b-6245-4c37-a7c7-d98d621e45de" />
 
-
 *SAP (Service Access Point) : Un point d'accès à un service SAP (Service Access Point) est un point de traversée de l'interface entre 2 couches adjacentes. C'est aussi l'identification ou l'adresse, unique, d'un accès à un service.
 ---------------------------------------------------
 🗺️ Séquence 5 : Retour sur le protocole DHCP
