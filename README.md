@@ -64,6 +64,7 @@ Vous pouvez observez les différentes couches OSI sur votre site **{site}.python
 *Une primitive de service : Une primitive de service est une opération qui invoque un service réalisé par une entité protocolaire. Pour un service, elles sont au nombre de 4 : REQ (Request), IND (Indication), RESP (Response), CONF (Confirmation). Parfois REQ et IND sont les seules définies. Par exemple T-CON-REQ, est une primitive de service de demande d'ouverture de connexion de la couche Session ou au-dessus à la couche Transport.
 
 *SDU vs PDU : Une SDU correspond aux informations qui sont passées à l'aide d'une primitive de service, Les PDU pour émission sont formées par une SDU de la couche supérieure à laquelle on a ajouté des informations de contrôle (adresse destination, adresse  source, numérotation de message, taille de fenêtre glissante…) pour la transmettre.
+
 <img width="552" height="204" alt="image" src="https://github.com/user-attachments/assets/f0d8f83b-6245-4c37-a7c7-d98d621e45de" />
 
 
